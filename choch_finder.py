@@ -2,9 +2,9 @@ import numpy as np
 import pandas as pd
 
 
-def find_bos_failure_pattern(data, bullish=True, bearish=True):
+def find_choch_pattern(data, bullish=True, bearish=True):
     """
-    Identifies Break of Structure (BOS) failure patterns in a dataset and marks 
+    Identifies Change of Character (CHoCH) patterns in a dataset and marks 
     breakout points in a "pattern" column.
 
     Parameters:
@@ -16,22 +16,22 @@ def find_bos_failure_pattern(data, bullish=True, bearish=True):
         - "Low": Low prices of the candles.
         - "Close": Closing prices of the candles.
     bullish : bool, optional (default=True)
-        If True, the function looks for bullish BOS failure patterns.
+        If True, the function looks for bullish CHoCH patterns.
     bearish : bool, optional (default=True)
-        If True, the function looks for bearish BOS failure patterns.
+        If True, the function looks for bearish CHoCH patterns.
 
     Returns:
     --------
     pandas.DataFrame <br>
         The input DataFrame with an additional column "pattern":
 
-        - 1 indicates a breakout above a bullish BOS failure pattern.
-        - -1 indicates a breakout below a bearish BOS failure pattern.
-        - 0 indicates no breakout.
+        - 1 indicates a bullish CHoCH pattern.
+        - -1 indicates a bearish CHoCH pattern.
+        - 0 indicates no pattern.
 
     Pattern Logic:
     --------------
-    A BOS failure pattern is defined using six consecutive pivot points:
+    A ChoCH pattern is defined using six consecutive pivot points:
     - For a bullish pattern:
         1. Pivot sequence: High (1), Low (2), High (1), Low (2), High (1), Low (2).
         2. Price structure:
